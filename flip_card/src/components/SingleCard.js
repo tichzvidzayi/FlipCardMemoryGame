@@ -4,7 +4,7 @@ export default function SingleCard({ card, handleChoice, flipped, locked }) {
   const play = () => {
     if (!locked) {
       handleChoice(card);
-      console.log(card);
+     // console.log(card);
     }
   };
 
