@@ -13,6 +13,22 @@ const tiles = [
 ];
 
 function App() {
+
+
+  const [cards, setCards] = useState(getCards());
+  function getCards() {
+    let res = [];
+    const temp = (localStorage.getItem("cards_game_state"));
+    try {
+      res = JSON.parse(temp);
+    } catch (e) {
+      return [];
+    }
+    return res;
+}
+
+
+
  
   const [turns, setTurns] = useState(getTurns());
   function getTurns() {
@@ -41,17 +57,6 @@ function App() {
   };
 
 
-  const [cards, setCards] = useState(getCards());
-  function getCards() {
-    let res = [];
-    const temp = (localStorage.getItem("cards_game_state"));
-    try {
-      res = JSON.parse(temp);
-    } catch (e) {
-      return [];
-    }
-    return res;
-}
 
   const reset_tiles = () => {
     const shuffled = [...tiles, ...tiles]
@@ -105,6 +110,7 @@ function App() {
         setCards((prevTurns) => {
           return prevTurns.map((card) => {
             if (card.src === choice1.src) {
+              //Save match to local storage
               return { ...card, matched: true };
             } else {
               return card;
