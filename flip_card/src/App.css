@@ -17,6 +17,22 @@ button:hover{
   background: #133371;
   color: #ffff;
 }
+img {
+  width:  210px;
+  height: 210px;
+}
+
+.card_grid {
+margin-top: 30px;
+margin-left: auto;
+margin-right: auto;
+display: grid;
+grid-template-columns: 1.4fr 1.4fr 1.4fr 1.4fr 1.4fr ;
+grid-gap: 20px;
+
+
+
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
