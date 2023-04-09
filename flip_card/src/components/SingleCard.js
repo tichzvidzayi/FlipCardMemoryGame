@@ -1,10 +1,13 @@
 import React from 'react'
 import './SingleCard.css'
-export default function SingleCard( {card, handleChoice, flipped}) {
+export default function SingleCard( {card, handleChoice, flipped, locked}) {
 
 const play = () =>{
-handleChoice(card);
-console.log(card);
+  if(!locked){
+    handleChoice(card);
+    console.log(card);
+  }
+
 }  
 
 
