@@ -7,9 +7,9 @@ import memoryanimation from "./cardmemory.json";
 const tiles = [
   { src: "/img/dolphin.png", matched: false },
   { src: "/img/elephant.png", matched: false },
-  { src: "/img/chick.png", matched: false },
-  { src: "/img/rhino.png", matched: false },
-  { src: "/img/kitten.png", matched: false },
+  { src: "/img/panda.png", matched: false },
+  { src: "/img/dog.png", matched: false },
+  { src: "/img/racoon.png", matched: false },
 ];
 
 function App() {
