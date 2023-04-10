@@ -43,11 +43,10 @@ function App() {
   const [choice2, setChoiceTwo] = useState(null);
   const [locked, setLocked] = useState(false);
 
-  /*          Show cards::
-         If the is already variables stored in Localstorage use it else a new game is started 
-        first and second will most likely be unnecessary but can be useful, if a player selects one
-        card and quickly refreshes the page.
-     */
+  /*  
+  Show cards::If the is already variables stored in Localstorage use it else a new game is started 
+     
+  */
 
   const show_tiles = () => {
     const arr = TryJson(localStorage.getItem("cards_game_state"));
@@ -55,11 +54,9 @@ function App() {
     const grid = [...arr];
 
     const tries = TryJson(JSON.parse(localStorage.getItem("number_of_tries")));
-    const _first = TryJson(localStorage.getItem("first_choice"));
-    const _second = TryJson(localStorage.getItem("second_choice"));
+    // const _first = TryJson(localStorage.getItem("first_choice"));
+    //const _second = TryJson(localStorage.getItem("second_choice"));
 
-    setChoiceOne(_first == null ? 0 : _first);
-    setChoiceTwo(_second == null ? 0 : _second);
     setCards(grid == null ? [] : grid);
     setTurns(tries == null ? 0 : tries);
   };
@@ -99,8 +96,6 @@ function App() {
     () => {
       window.localStorage.setItem("cards_game_state", JSON.stringify(cards));
       window.localStorage.setItem("number_of_tries", JSON.stringify(turns));
-      window.localStorage.setItem("first_choice", JSON.stringify(choice1));
-      window.localStorage.setItem("second_choice", JSON.stringify(choice2));
     },
     [turns, choice1, choice2, cards]
   );
