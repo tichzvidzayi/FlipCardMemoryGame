@@ -3,6 +3,7 @@
     margin: 10px auto;
 }
 .button {
+    flex: auto;
     background: none;
     border: 3px solid #ffff;
     padding: 100px 20px;
@@ -11,8 +12,8 @@
     font-weight: bold;
     cursor: pointer;
     font-size: 4em;
-    width: 100px; 
-    height: 50px;
+    width: 100px;
+    height: 150px;
 }
 
 button:hover {
@@ -31,13 +32,13 @@ img {
     grid-template-columns: 1.4fr 1.4fr 1.4fr 1.4fr 1.4fr;
     grid-gap: 20px;
 }
-.c_animation{
+.c_animation {
     height: 150px;
     width: 150px;
     float: top;
-   
+
 }
 
-p{
-    font-size: x-small;   
+p {
+    font-size: x-small;
 }
