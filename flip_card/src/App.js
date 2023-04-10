@@ -120,14 +120,14 @@ function App() {
             }
           });
         });
-// Allow for a smooth flip of the card
+        // Allow for a smooth flip of the card
         setTimeout(() => resetTurn(), 1200);
       } else {
         setTimeout(() => resetTurn(), 1200);
       }
     }
   }, [choice1, choice2]);
- // Reset the number of turns and restart the game
+  // Reset the number of turns and restart the game
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
@@ -138,7 +138,7 @@ function App() {
       reset_tiles();
     }
   };
-// Include a Lottie animation 
+  // Include a Lottie animation
   return (
     <div className="App">
       <div className="c_animation">
@@ -148,9 +148,7 @@ function App() {
           /15
         </span>
       </div>
-/
-      <button onClick={reset_tiles}>New Game</button>
-
+      /<button onClick={reset_tiles}>New Game</button>
       <div className="card_grid">
         {cards.map((card) => (
           <SingleCard
@@ -162,7 +160,6 @@ function App() {
           />
         ))}{" "}
       </div>
-
       <p>
         CardFlip is a timed card memory game. Click the cards to see what symbol
         they uncover and try to find the matching symbol underneath the other
