@@ -70,7 +70,7 @@ function App() {
   const reset_tiles = () => {
     const shuffled = [...tiles, ...tiles]
       .sort(() => Math.random() - 0.5)
-      .map((tile) => ({
+      .map(tile => ({
         ...tile,
         id: Math.random()
       }));
@@ -80,7 +80,7 @@ function App() {
     setTurns(0);
   };
 
-  const handleChoice = (card) => {
+  const handleChoice = card => {
     if (choice1) {
       setChoiceTwo(card);
     } else {
@@ -95,43 +95,49 @@ function App() {
 
   // Save Game State to local storage
 
-  useEffect(() => {
-    window.localStorage.setItem("cards_game_state", JSON.stringify(cards));
-    window.localStorage.setItem("number_of_tries", JSON.stringify(turns));
-    window.localStorage.setItem("first_choice", JSON.stringify(choice1));
-    window.localStorage.setItem("second_choice", JSON.stringify(choice2));
-  }, [turns, choice1, choice2, cards]);
+  useEffect(
+    () => {
+      window.localStorage.setItem("cards_game_state", JSON.stringify(cards));
+      window.localStorage.setItem("number_of_tries", JSON.stringify(turns));
+      window.localStorage.setItem("first_choice", JSON.stringify(choice1));
+      window.localStorage.setItem("second_choice", JSON.stringify(choice2));
+    },
+    [turns, choice1, choice2, cards]
+  );
 
   // Check for matching cards
 
-  useEffect(() => {
-    if (choice1 && choice2) {
-      setLocked(true);
-      if (choice1.src === choice2.src) {
-        setCards((prevTurns) => {
-          return prevTurns.map((card) => {
-            if (card.src === choice1.src) {
-              return {
-                ...card,
-                matched: true
-              };
-            } else {
-              return card;
-            }
+  useEffect(
+    () => {
+      if (choice1 && choice2) {
+        setLocked(true);
+        if (choice1.src === choice2.src) {
+          setCards(prevTurns => {
+            return prevTurns.map(card => {
+              if (card.src === choice1.src) {
+                return {
+                  ...card,
+                  matched: true
+                };
+              } else {
+                return card;
+              }
+            });
           });
-        });
-        // Allow for a smooth flip of the card
-        setTimeout(() => resetTurn(), 1200);
-      } else {
-        setTimeout(() => resetTurn(), 1200);
+          // Allow for a smooth flip of the card
+          setTimeout(() => resetTurn(), 1200);
+        } else {
+          setTimeout(() => resetTurn(), 1200);
+        }
       }
-    }
-  }, [choice1, choice2]);
+    },
+    [choice1, choice2]
+  );
   // Reset the number of turns and restart the game
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
-    setTurns((prevTurns) => prevTurns + 1);
+    setTurns(prevTurns => prevTurns + 1);
     setLocked(false);
 
     if (turns >= 20) {
@@ -148,9 +154,9 @@ function App() {
           /15
         </span>
       </div>
-      /<button onClick={reset_tiles}>New Game</button>
+      <button onClick={reset_tiles}>New Game</button>
       <div className="card_grid">
-        {cards.map((card) => (
+        {cards.map(card =>
           <SingleCard
             key={card.id}
             card={card}
@@ -158,7 +164,7 @@ function App() {
             flipped={card === choice1 || card === choice2 || card.matched}
             locked={locked}
           />
-        ))}{" "}
+        )}{" "}
       </div>
       <p>
         CardFlip is a timed card memory game. Click the cards to see what symbol
