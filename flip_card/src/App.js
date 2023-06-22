@@ -28,13 +28,13 @@ const tiles = [
 ];
 
 function App() {
-  function TryJson(json) {
+  let TryJson = json => {
     try {
       return JSON.parse(json);
     } catch (e) {
       return null;
     }
-  }
+  };
 
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
@@ -44,8 +44,7 @@ function App() {
   const [locked, setLocked] = useState(false);
 
   /*  
-  Show cards::If the is already variables stored in Localstorage use it else a new game is started 
-     
+  Show cards::If the is already variables stored in Localstorage use it else a new game is started   
   */
 
   const show_tiles = () => {
@@ -91,7 +90,7 @@ function App() {
     show_tiles();
   }, []);
 
-  // Save Game State to local storage
+  // Save Game State to local storage (browser)
 
   useEffect(
     () => {
@@ -166,7 +165,7 @@ function App() {
         CardFlip is a timed card memory game. Click the cards to see what symbol
         they uncover and try to find the matching symbol underneath the other
         cards. Uncover two matching symbols at once to eliminate them from the
-        game. Eliminate all cards as fast as you can to win the game
+        game. Eliminate all cards as fast as you can to win the game.
       </p>
     </div>
   );
