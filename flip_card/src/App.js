@@ -50,11 +50,10 @@ function App() {
 
   const show_tiles = () => {
     const arr = TryJson(localStorage.getItem("cards_game_state"));
-    let grid =[];
-    if(arr)
-    {
-     grid = [...arr];
-  }
+    let grid = [];
+    if (arr) {
+      grid = [...arr];
+    }
     const tries = TryJson(JSON.parse(localStorage.getItem("number_of_tries")));
     // const _first = TryJson(localStorage.getItem("first_choice"));
     //const _second = TryJson(localStorage.getItem("second_choice"));
