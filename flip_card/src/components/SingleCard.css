@@ -1,5 +1,4 @@
 .card {
-
     position: relative;
 }
 .card img {
@@ -22,7 +21,7 @@
     transition-delay: 0.3s;
 }
 
-/* Animation    */
+/* Animate card*/
 
 .card .back {
     transition: all ease-in-out 0.2s;
