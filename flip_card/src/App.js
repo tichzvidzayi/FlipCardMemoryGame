@@ -28,7 +28,7 @@ const tiles = [
 ];
 
 function App() {
-  let TryJson = json => {
+  const TryJson = json => {
     try {
       return JSON.parse(json);
     } catch (e) {
@@ -43,10 +43,7 @@ function App() {
   const [choice2, setChoiceTwo] = useState(null);
   const [locked, setLocked] = useState(false);
 
-  /*  
-  Show cards::If the is already variables stored in Localstorage use it else a new game is started   
-  */
-
+//  Show cards::If the is already variables stored in local-storage use it else a new game is started   
   const show_tiles = () => {
     const arr = TryJson(localStorage.getItem("cards_game_state"));
     let grid = [];
