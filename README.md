@@ -2,10 +2,10 @@
 
 How to run the application.
 
-Step 1 :Clone the repository from Github (git clone https://github.com/tichzvidzayi/FlipCardMemoryGame.git).
+Step 1 : Clone the repository from GitHub (git clone https://github.com/tichzvidzayi/FlipCardMemoryGame.git).
 Step 2: Navigate to the flip_card directory.
 Step 3: Run: npm install.
-Step 4: Run : npm run start
+Step 4: Run: npm run start
 Step 5: Navigate to browser.
 
 Rules:
