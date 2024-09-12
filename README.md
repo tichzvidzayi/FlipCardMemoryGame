@@ -9,7 +9,7 @@ Step 4: Run: npm run start
 Step 5: Navigate to the browser.
 
 Rules:
-- There are 5 pairs of pictures/card/tiles, match each card to the corresponding card.
+- There are 5 (five) pairs of pictures/cards/tiles, match each card to the corresponding card.
 - The game ends when all pairs are matched and tries are less than or equal to 15 times.
 - After 15 tries/attempts, the game automatically resets if the player has not matched all cards.
 
