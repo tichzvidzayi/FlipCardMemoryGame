@@ -2,7 +2,7 @@
 
 How to run the application.
 
-Step 1: Clone the repository from GitHub (git clone https://github.com/tichzvidzayi/FlipCardMemoryGame.git).
+Step 1: Clone the repository from GitHub (git clone https://github.com/tichzvidzayi/FlipCardMemoryGame.git)
 Step 2: Navigate to the flip_card directory.
 Step 3: Run: npm install.
 Step 4: Run: npm run start
@@ -16,6 +16,4 @@ Rules:
 * The game uses the browser's localstorage to store the state of the game.
   A user should be able to access the previous state after a refresh or
   closing of the browser. Given that the localstorage is still available.
-
-  Last Edited By: Tich Zvidzayi
-                    22/06/2023
+                
