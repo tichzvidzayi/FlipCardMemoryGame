@@ -15,5 +15,5 @@ Step 5: Navigate to the browser.
 
 * The game uses the browser's local storage to store the state of the game.
   A user should be able to access the previous state after a refresh or
-  closing of the browser. Given that the localstorage is still available.
+  closing of the browser. Given that the local storage is still available.
                 
