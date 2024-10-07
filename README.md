@@ -13,7 +13,7 @@ Step 5: Navigate to the browser.
 - The game ends when all pairs are matched and tries are less than or equal to 15 times.
 - After 15 tries/attempts, the game automatically resets if the player has not matched all cards.
 
-* The game uses the browser's localstorage to store the state of the game.
+* The game uses the browser's local storage to store the state of the game.
   A user should be able to access the previous state after a refresh or
   closing of the browser. Given that the localstorage is still available.
                 
