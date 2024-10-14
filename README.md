@@ -6,7 +6,7 @@ Step 1: Clone the repository from GitHub (git clone https://github.com/tichzvidz
 Step 2: Navigate to the flip_card directory.
 Step 3: Run: npm install.
 Step 4: Run: npm run start
-Step 5: Navigate to the browser.
+Step 5: Navigate to the browser
 
 ## Rules:
 - There are 5 (five) pairs of pictures/cards/tiles, match each card to the corresponding card.
