@@ -1,4 +1,4 @@
-# Flip Card Memory Game is a React.js, HTML, CSS, Lottie web-app
+# Flip Card Memory Game is a React, HTML, CSS, Lottie web-app
 ## How to run the application
 
 Step 1: Clone the repository from GitHub (git clone https://github.com/tichzvidzayi/FlipCardMemoryGame.git)
