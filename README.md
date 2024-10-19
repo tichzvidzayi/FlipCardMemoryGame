@@ -1,4 +1,4 @@
-# Flip Card Memory Game is a React.js, HTML, CSS, Lottie based application
+# Flip Card Memory Game is a React.js, HTML, CSS, Lottie web-application
 
 ## How to run the application
 
