@@ -28,6 +28,9 @@ const tiles = [
 ];
 
 function App() {
+  const MAX_TURNS = 20; // Define maximum number of allowed turns
+
+  // Utility function to safely parse JSON
   const TryJson = json => {
     try {
       return JSON.parse(json);
@@ -38,29 +41,23 @@ function App() {
 
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
-
   const [choice1, setChoiceOne] = useState(null);
   const [choice2, setChoiceTwo] = useState(null);
   const [locked, setLocked] = useState(false);
 
-//  Show cards::If the is already variables stored in local-storage use it else a new game is started   
+  // Show cards: if stored variables exist in localStorage, use them; else, start a new game
   const show_tiles = () => {
     const arr = TryJson(localStorage.getItem("cards_game_state"));
     let grid = [];
     if (arr) {
       grid = [...arr];
     }
-    const tries = TryJson(JSON.parse(localStorage.getItem("number_of_tries")));
-    // const _first = TryJson(localStorage.getItem("first_choice"));
-    //const _second = TryJson(localStorage.getItem("second_choice"));
-
+    const tries = TryJson(localStorage.getItem("number_of_tries"));
     setCards(grid == null ? [] : grid);
     setTurns(tries == null ? 0 : tries);
   };
-  /* 
-    Reset the tiles/cards if tries >= 15, players chooses to, or when Browser's localstorage is corrupted/empty 
-    The function spreads the tiles, sorts, randomises the order and assigns random ids (float) 
- */
+
+  // Reset the tiles/cards (shuffling and randomizing) or on player request
   const reset_tiles = () => {
     const shuffled = [...tiles, ...tiles]
       .sort(() => Math.random() - 0.5)
@@ -72,51 +69,47 @@ function App() {
     setChoiceTwo(null);
     setCards(shuffled);
     setTurns(0);
+
+    // Clear previous game state from localStorage
+    localStorage.removeItem("cards_game_state");
+    localStorage.removeItem("number_of_tries");
   };
 
+  // Handle card choice
   const handleChoice = card => {
-    if (choice1) {
-      setChoiceTwo(card);
-    } else {
-      setChoiceOne(card);
+    if (choice1 !== card) {
+      choice1 ? setChoiceTwo(card) : setChoiceOne(card);
     }
   };
 
-  // Start the game automatically
   useEffect(() => {
     show_tiles();
   }, []);
 
-  // Save Game State to local storage (browser)
-
+  // Save game state to localStorage
   useEffect(
     () => {
-      window.localStorage.setItem("cards_game_state", JSON.stringify(cards));
-      window.localStorage.setItem("number_of_tries", JSON.stringify(turns));
+      localStorage.setItem("cards_game_state", JSON.stringify(cards));
+      localStorage.setItem("number_of_tries", JSON.stringify(turns));
     },
-    [turns, choice1, choice2, cards]
+    [turns, cards]
   );
 
   // Check for matching cards
-
   useEffect(
     () => {
       if (choice1 && choice2) {
         setLocked(true);
         if (choice1.src === choice2.src) {
-          setCards(prevTurns => {
-            return prevTurns.map(card => {
+          setCards(prevCards => {
+            return prevCards.map(card => {
               if (card.src === choice1.src) {
-                return {
-                  ...card,
-                  matched: true
-                };
+                return { ...card, matched: true };
               } else {
                 return card;
               }
             });
           });
-          // Allow for a smooth flip of the card
           setTimeout(() => resetTurn(), 1200);
         } else {
           setTimeout(() => resetTurn(), 1200);
@@ -125,25 +118,35 @@ function App() {
     },
     [choice1, choice2]
   );
-  // Reset the number of turns and restart the game
+
+  // Reset turn after checking for a match
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns(prevTurns => prevTurns + 1);
     setLocked(false);
 
-    if (turns >= 20) {
-      reset_tiles();
+    if (turns + 1 >= MAX_TURNS) {
+      reset_tiles(); // Reset game if max turns are exceeded
     }
   };
-  // Include a Lottie animation
+
+  // Check if all cards are matched (game won)
+  useEffect(
+    () => {
+      if (cards.length && cards.every(card => card.matched)) {
+        alert("Congratulations! You've matched all the cards!");
+        reset_tiles();
+      }
+    },
+    [cards]
+  );
+
   return (
     <div className="App">
       <div className="c_animation">
-        <Lottie animationData={memoryanimation} />
         <span>
-          Tries : {turns}
-          /15
+          Tries: {turns}/{MAX_TURNS}
         </span>
       </div>
       <button onClick={reset_tiles}>New Game</button>
@@ -156,7 +159,7 @@ function App() {
             flipped={card === choice1 || card === choice2 || card.matched}
             locked={locked}
           />
-        )}{" "}
+        )}
       </div>
       <p>
         CardFlip is a timed card memory game. Click the cards to see what symbol
