@@ -1,44 +1,59 @@
+/* App.css */
 .App {
     max-width: 800px;
-    margin: 10px auto;
+    margin: 20px auto;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
+
 .button {
-    flex: auto;
-    background: none;
-    border: 3px solid #ffff;
-    padding: 100px 20px;
-    border-radius: 4px;
-    color: #ffff;
+    background: #009688; /* Teal color */
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: #ffffff;
     font-weight: bold;
     cursor: pointer;
-    font-size: 4em;
-    width: 100px;
-    height: 150px;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background: #2d545e;
-    color: #f8ec07;
+.button:hover {
+    background-color: #00796b; /* Darker teal on hover */
 }
+
 img {
-    width: 190px;
-    height: 190px;
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
 }
+
 .card_grid {
     margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
     display: grid;
-    grid-template-columns: 1.4fr 1.4fr 1.4fr 1.4fr 1.4fr;
-    grid-gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px; /* Reduced gap for a tighter layout */
 }
-.c_animation {
-    height: 150px;
-    width: 150px;
-    float: top;
 
+.c_animation {
+    margin-bottom: 20px; /* Add space below animation */
 }
 
 p {
-    font-size: x-small;
+    font-size: small;
+    color: #333; /* Darker text for readability */
+}
+
+@media (max-width: 600px) {
+    .card_grid {
+        grid-template-columns: repeat(3, 1fr); /* Responsive adjustment */
+    }
+    
+    .button {
+        font-size: 1.2em; /* Smaller button text on mobile */
+        padding: 10px 20px; /* Adjust padding */
+    }
 }

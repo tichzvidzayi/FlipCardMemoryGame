@@ -1,35 +1,42 @@
+/* SingleCard.css */
 .card {
     position: relative;
+    width: 100%; /* Allow cards to be responsive */
+    max-width: 190px; /* Set a max width for consistency */
+    perspective: 1000px; /* Enable 3D perspective for flipping effect */
+    margin: 0 auto; /* Center cards in their container */
 }
-.card img {
 
+.card img {
     width: 100%;
     display: block;
-    border: 2px solid #ffff;
-    border-radius: 6px;
+    border: 2px solid #ffffff; /* White border for contrast */
+    border-radius: 8px; /* Slightly larger border radius for rounded corners */
 }
 
-/* Front and back flip */
+/* Front and back flip styles */
+.card .front,
+.card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back face when flipped */
+    border-radius: 8px; /* Consistent rounding on both sides */
+}
 
 .card .front {
-    transform: rotateY(90deg);
-    transition: all ease-in;
-    position: absolute;
-}
-.flipped .front {
-    transform: rotateY(0deg);
-    transition-delay: 0.3s;
+    transform: rotateY(180deg); /* Start with the front face hidden */
+    transition: transform 0.6s ease; /* Smooth transition for flipping */
 }
 
-/* Animate card*/
+.flipped .front {
+    transform: rotateY(0deg); /* Show front face when flipped */
+}
 
 .card .back {
-    transition: all ease-in-out 0.2s;
-    transition-delay: 0.2s;
+    transition: transform 0.6s ease; /* Smooth transition for flipping */
 }
 
 .flipped .back {
-
-    transform: rotateY(90deg);
-    transition-delay: 0s;
+    transform: rotateY(180deg); /* Hide back face when flipped */
 }

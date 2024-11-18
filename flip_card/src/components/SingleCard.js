@@ -1,5 +1,6 @@
 import React from "react";
 import "./SingleCard.css";
+
 export default function SingleCard({ card, handleChoice, flipped, locked }) {
   const play = () => {
     if (!locked) {
@@ -8,10 +9,10 @@ export default function SingleCard({ card, handleChoice, flipped, locked }) {
   };
 
   return (
-    <div className="card">
-      <div className={flipped ? "flipped" : ""}>
+    <div className="card" onClick={play}>
+      <div className={`card-inner ${flipped ? "flipped" : ""}`}>
         <img className="front" src={card.src} alt="front" />
-        <img onClick={play} className="back" src="/img/cover.png" alt="back" />
+        <img className="back" src="/img/cover.png" alt="back" />
       </div>
     </div>
   );
